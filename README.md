@@ -1,3 +1,6 @@
 # git-practice
 For git practice
-changed from local 
+
+- contents #1 3.1.0
+- changed from remote
+- changed from local 
