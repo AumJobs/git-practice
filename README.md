@@ -5,5 +5,6 @@ For git practice
 - changed from remote
 - changed from local
 - stash test 
+- commit
 - test test test
 - test test
