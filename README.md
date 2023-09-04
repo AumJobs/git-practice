@@ -6,3 +6,5 @@ For git practice
 - changed from local
 - stash test 
 - commit
+- test test test
+- test test
