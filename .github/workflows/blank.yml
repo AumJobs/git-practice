@@ -1,0 +1,79 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Create PR about current release into master
+
+# Controls when the workflow will run
+on:
+  repository_dispatch:
+    types: [ jira-webhook ]
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  #push:
+  #  branches: [ "sync" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Create Pull Request
+        # You may pin to the exact commit or the version.
+        # uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
+          token: ${{ github.token }}
+          # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
+      
+          #path: # optional
+          # A comma or newline-separated list of file paths to commit. Paths should follow git's pathspec syntax. Defaults to adding all new and modified files.
+      
+          #add-paths: # optional
+          # The message to use when committing changes.
+          #commit-message: # optional, default is [create-pull-request] automated change
+          # The committer name and email address in the format `Display Name <email@address.com>`. Defaults to the GitHub Actions bot user.
+      
+          #committer: # optional, default is GitHub <noreply@github.com>
+          # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
+      
+          #author: # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          # Add `Signed-off-by` line by the committer at the end of the commit log message.
+          #signoff: # optional
+          # The pull request branch name.
+          branch: ${{ github.event.target_branch }}
+          # Delete the `branch` when closing pull requests, and when undeleted after merging. Recommend `true`.
+      
+          #delete-branch: # optional
+          # The branch suffix type when using the alternative branching strategy.
+          #branch-suffix: # optional
+          # The pull request base branch. Defaults to the branch checked out in the workflow.
+      
+          base: master
+          # A fork of the checked out parent repository to which the pull request branch will be pushed. e.g. `owner/repo-fork`. The pull request will be created to merge the fork's branch into the parent's base.
+      
+          #push-to-fork: # optional
+          # The title of the pull request.
+          title: sync-test
+          # The body of the pull request.
+          body: sync-test body
+          # The path to a file containing the pull request body. Takes precedence over `body`.
+          #body-path: # optional
+          # A comma or newline separated list of labels.
+          labels: sync
+          # A comma or newline separated list of assignees (GitHub usernames).
+          #assignees: # optional
+          # A comma or newline separated list of reviewers (GitHub usernames) to request a review from.
+          #reviewers: # optional
+          # A comma or newline separated list of GitHub teams to request a review from. Note that a `repo` scoped Personal Access Token (PAT) may be required.
+      
+          #team-reviewers: # optional
+          # The number of the milestone to associate the pull request with.
+          #milestone: # optional
+          # Create a draft pull request. It is not possible to change draft status after creation except through the web interface
+          #draft: # optional
