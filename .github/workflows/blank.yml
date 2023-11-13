@@ -22,7 +22,7 @@ jobs:
       - name: Reset branch
         run: |
           git fetch origin *:*
-          #git reset --hard main
+
       - name: Create Pull Request
         # You may pin to the exact commit or the version.
         # uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38
