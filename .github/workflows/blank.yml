@@ -25,8 +25,9 @@ jobs:
         run: |
           git fetch --all
 
+      - uses: actions/checkout@v4
       - name: Create Pull Request
-        uses: actions/checkout@1.0.0
+        uses: thomaseizinger/create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ github.token }}
           head: ${{ github.event.client_payload.target_branch }}
