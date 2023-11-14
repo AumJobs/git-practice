@@ -1,7 +1,7 @@
 #release_into_master.sh version 
 
-target_branch_name="origin/release/${$1}"
-branch_name="sync/release_${$1}_into_master"
+target_branch_name="origin/release/$1"
+branch_name="sync/release_$1_into_master"
 
 git branch -D ${branch_name}
 
